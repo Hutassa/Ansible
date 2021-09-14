@@ -1,0 +1,14 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: Der Webserver wird  gestoppt 
+      docker_container:
+        name: heimwebserver
+        image: wordpress
+        state: stopped
+    - name: Die Datenbank wird gestoppt
+      docker_container:
+        name: heimdatenbank
+        image: mysql
+        state: stopped

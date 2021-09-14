@@ -1,0 +1,10 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: starte mysql Container
+      raw: docker start heimdatenbank
+
+    - name: starte webserver
+      raw: docker start heimwebserver
+     
