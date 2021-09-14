@@ -1,0 +1,15 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: starte mysql Container
+      docker_container:
+        name: z_datenbank
+        image: mysql
+        state: started
+
+    - name: starte webserver
+      docker_container:
+        name: z_webserver
+        image: wordpress
+        state: started
