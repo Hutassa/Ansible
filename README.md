@@ -1,4 +1,3 @@
 # Ansible
 
-Hier ist nichts
-Oder Doch?
+Ein paar Spielereien mit Ansible und Docker Containern
