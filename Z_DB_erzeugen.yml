@@ -4,7 +4,7 @@
   tasks:
     - name: mysql Container erzeugen
       docker_container:
-        name: z_datenbank
+        name: Z_datenbank
         image: mysql
         state: started
         env:

@@ -1,0 +1,10 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: starte mysql Container
+      raw: docker start Z_datenbank
+
+    - name: start webserver
+      raw: docker start Z_webserver
+     
