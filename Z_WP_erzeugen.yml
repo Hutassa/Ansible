@@ -8,7 +8,7 @@
         image: wordpress
         state: started
         ports:
-          192.168.18.99:8000:80
+          192.168.19.99:8000:80
         env:
           WORDPRESS_DB_HOST: Z_datenbank
           WORDPRESS_DB_NAME: wordpress

@@ -10,6 +10,6 @@
         env:
           MYSQL_ROOT_PASSWORD: "michaeloderjörg"
         ports:
-          - 192.168.18.101:3000:3306
+          - 192.168.19.101:3000:3306
         volumes:
-          - /home/mathias/Dokumente/z_db_daten:/var/lib/mysql
+          - v19:/var/lib/mysql
