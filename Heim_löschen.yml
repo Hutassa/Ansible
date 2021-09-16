@@ -1,0 +1,8 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: webserver löschen
+      raw: docker rm -f heimwebserver
+    - name: datenbank löschen
+      raw: docker rm -f heimdatenbank
