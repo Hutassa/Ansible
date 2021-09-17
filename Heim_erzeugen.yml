@@ -1,0 +1,31 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: DB erzeugen
+      docker_container:
+        name: heimdatenbank
+        image: mysql
+        state: started
+        ports:
+          - 192.168.178.101:3000:3306
+        env:
+          MYSQL_ROOT_PASSWORD: Schmetterl1ng
+          MYSQL_DATABASE: wordpress
+        volumes:
+          heim:/var/lib/mysql
+
+    - name: WP erzeugen
+      docker_container:
+        name: heimwebserver
+        image: wordpress
+        state: started
+        ports:
+          - 192.168.178.99:8000:80
+        env:
+          WORDPRESS_DB_HOST: heimdatenbank
+          WORDPRESS_DB_NAME: wordpress
+          WORDPRESS_DB_USER: root
+          WORDPRESS_DB_PASSWORD: Schmetterl1ng
+        links:
+          - heimdatenbank:mysql

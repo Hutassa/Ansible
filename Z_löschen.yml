@@ -1,0 +1,13 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+  
+    - name: lösche PHPmyAdmin-Container
+      raw: docker rm -f Z_phpserver
+      
+    - name: lösche Wordpress-Container
+      raw: docker rm -f Z_webserver
+
+    - name: lösche MYsql-Container
+      raw: docker rm -f Z_datenbank
