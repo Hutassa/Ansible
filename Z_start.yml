@@ -2,9 +2,12 @@
 - hosts: all
   become: yes
   tasks:
-    - name: starte mysql Container
+
+    - name: starte MySQL-Container
       raw: docker start Z_datenbank
 
-    - name: start webserver
+    - name: starte Wordpress-Container
       raw: docker start Z_webserver
      
+    - name: starte PHYmyAdmin-Container
+      raw: docker start Z_phpserver

@@ -2,12 +2,20 @@
 - hosts: all
   become: yes
   tasks:
-    - name: Der Webserver wird  gestoppt 
+
+    - name: stoppe PHPmyAdmin-Container
+      docker_container:
+        name: Z_phpserver
+        image: phpmyadmin
+        state: stopped
+
+    - name: stoppe Wordpress-Container 
       docker_container:
         name: Z_webserver
         image: wordpress
         state: stopped
-    - name: Die Datenbank wird gestoppt
+
+    - name: stoppe MySQL-Container
       docker_container:
         name: Z_datenbank
         image: mysql
