@@ -1,0 +1,10 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+
+    - name: Updates
+      raw: apt update
+    
+    - name: Upgrades
+      raw: apt upgrade
