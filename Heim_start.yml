@@ -8,3 +8,5 @@
     - name: starte webserver
       raw: docker start heimwebserver
      
+    - name: starte phpserver
+      raw: docker start heimphpserver

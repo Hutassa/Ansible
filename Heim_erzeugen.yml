@@ -2,6 +2,7 @@
 - hosts: all
   become: yes
   tasks:
+
     - name: DB erzeugen
       docker_container:
         name: heimdatenbank
@@ -27,5 +28,17 @@
           WORDPRESS_DB_NAME: wordpress
           WORDPRESS_DB_USER: root
           WORDPRESS_DB_PASSWORD: Schmetterl1ng
+        links:
+          - heimdatenbank:mysql
+
+    - name: PHP erzeugen
+      docker_container:
+        name: heimphpserver
+        image: phpmyadmin
+        state: started
+        ports:
+          - 192.168.178.99:12000:80
+        env:
+          PMA_HOST: heimdatenbank
         links:
           - heimdatenbank:mysql
