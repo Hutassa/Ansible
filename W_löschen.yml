@@ -1,0 +1,25 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+
+    - name: lösche php-server
+      docker-container:
+        name: antoine
+        image: phpmyadmin
+        state: absent
+        force_kill: true
+
+    - name: lösche webserver
+      docker-container:
+        name: erdmut
+        image: wordpress
+        state: absent
+        force_kill: true
+     
+    - name: lösche Datenbank
+      docker-container:
+        name: bob
+        image: mysql
+        state: absent
+        force_kill: true

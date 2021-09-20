@@ -1,0 +1,13 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+
+    - name: stoppe php-server
+      raw: docker stop antoine
+    
+    - name: stoppe webserver
+      raw: docker stop erdmut
+
+    - name: stoppe datenbank
+      raw: docker stop bob

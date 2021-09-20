@@ -2,28 +2,41 @@
 - hosts: all
   become: yes
   tasks:
-    - name: website Datenbank erzeugen
+    - name: Datenbank erzeugen
       docker_container:
-        name: website_db
+        name: bob
         image: mysql
         state: started
         ports:
-          - 4400:3306
+          - 192.168.56.104:3000:3306
         env:
-          MYSQL_ROOT_PASSWORD=supraintercellular
+          MYSQL_ROOT_PASSWORD: bob
         volumes:
           - website:/var/lib/mysql
-    - name: website Wordpress erzeugen
+
+    - name: Wordpress erzeugen
       docker_container:
-        name: website_wordpress
+        name: erdmut
         image: wordpress
         state: started
         ports: 
-          - 9900:80
+          - 192.168.56.104:8000:80
         env:
-          WORDPRESS_DB_HOST: website_db
+          WORDPRESS_DB_HOST: bob
           WORDPRESS_DB_USER: root
-          WORDPRESS_DB_PASSWORD: supraintercellular
           WORDPRESS_DB_NAME: wordpress
+          WORDPRESS_DB_PASSWORD: bob
         links:
-          - website_db:mysql
+          - bob:mysql
+
+    - name: PHPmyAdmin erzeugen
+      docker_container:
+        name: antoine
+        image: phpmyadmin
+        state: started
+        ports:
+          - 192.168.56.104:12000:80
+        env:
+          PMA_HOST: bob
+        links:
+          - bob:mysql

@@ -1,0 +1,43 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+
+    - name: Datenbank-Container erzeugen
+      docker_container:
+        name: Z_datenbank
+        image: mysql
+        state: started
+        ports:
+          - 192.168.19.101:3000:3306
+        volumes:
+          - zentrale:/var/lib/mysql
+        env:
+          MYSQL_ROOT_PASSWORD: michaeloderjörg
+
+    - name: Wordpress-Container erzeugen 
+      docker_container:
+        name: Z_webserver
+        image: wordpress
+        state: started
+        ports: 
+          - 192.168.19.99:8000:80
+        env:
+          WORDPRESS_DB_HOST: Z_datenbank
+          WORDPRESS_DB_USER: root
+          WORDPRESS_DB_PASSWORD: michaeloderjörg
+          WORDPRESS_DB_NAME: wordpress               
+        links:
+          - Z_datenbank:mysql  
+     
+    - name: PHPmyAdmin-Container erzeugen
+      docker_container:
+        name: Z_phpserver
+        image: phpmyadmin
+        state: started
+        ports:
+          - 192.168.19.99:12000:80
+        env:
+          PMA_HOST: Z_datenbank
+        links:
+          - Z_datenbank:mysql
