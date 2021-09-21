@@ -7,6 +7,8 @@
     apt:
       name: libapache2-mod-php
       state: latest # absent
+    when: ansible_distribution in ["Debian", "Ubuntu"]
+          and ansible_virtualization_type in ["virtualbox"]
   #- name: Updates
  #   apt: 
 #      update_cache: yes
