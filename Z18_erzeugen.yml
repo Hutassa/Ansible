@@ -11,7 +11,7 @@
         ports:
           - 192.168.18.101:3000:3306
         volumes:
-          - zentrale:/var/lib/mysql
+          - cpwebsite:/var/lib/mysql
         env:
           MYSQL_ROOT_PASSWORD: michaeloderjörg
 

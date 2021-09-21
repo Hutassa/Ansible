@@ -3,8 +3,10 @@
   become: yes
   tasks:
 
-    - name: Updates
-      raw: apt update
-    
-    - name: Upgrades
-      raw: apt upgrade
+  - name: php unterstützung für apache
+    apt:
+      name: libapache2-mod-php
+      state: latest # absent
+  #- name: Updates
+ #   apt: 
+#      update_cache: yes
