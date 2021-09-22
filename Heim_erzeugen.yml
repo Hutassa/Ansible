@@ -14,7 +14,7 @@
           MYSQL_ROOT_PASSWORD: Schmetterl1ng
           MYSQL_DATABASE: wordpress
         volumes:
-          heim:/var/lib/mysql
+          heimwebsite:/var/lib/mysql
 
     - name: WP erzeugen
       docker_container:

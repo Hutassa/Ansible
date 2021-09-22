@@ -11,7 +11,7 @@
         ports:
           - 192.168.19.101:3000:3306
         volumes:
-          - zentrale:/var/lib/mysql
+          - Z19-website:/var/lib/mysql
         env:
           MYSQL_ROOT_PASSWORD: michaeloderjörg
 
