@@ -1,3 +1,3 @@
 # Ansible
 
-Ein paar Spielereien mit Ansible und Docker Containern auf unterschiedliche Weisen
+Ein paar Spielereien mit Ansible und Docker Containern auf unterschiedliche Arten
