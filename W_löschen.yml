@@ -4,21 +4,21 @@
   tasks:
 
     - name: lösche php-server
-      docker-container:
+      docker_container:
         name: antoine
         image: phpmyadmin
         state: absent
         force_kill: true
 
     - name: lösche webserver
-      docker-container:
+      docker_container:
         name: erdmut
         image: wordpress
         state: absent
         force_kill: true
      
     - name: lösche Datenbank
-      docker-container:
+      docker_container:
         name: bob
         image: mysql
         state: absent

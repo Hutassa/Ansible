@@ -4,10 +4,10 @@
   tasks:
 
     - name: starte MySQL-Container
-      raw: docker start Z_datenbank
+      raw: docker start Z18_datenbank
 
     - name: starte Wordpress-Container
-      raw: docker start Z_webserver
+      raw: docker start Z18_webserver
      
     - name: starte PHYmyAdmin-Container
-      raw: docker start Z_phpserver
+      raw: docker start Z18_phpserver

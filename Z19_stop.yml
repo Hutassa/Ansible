@@ -1,0 +1,12 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+
+    - name: stoppe Container
+      docker_container:
+        name:
+          - Z19_phpserver
+          - Z19_webserver
+          - Z19_datenbank
+        state: stopped

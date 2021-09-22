@@ -4,10 +4,10 @@
   tasks:
   
     - name: lösche PHPmyAdmin-Container
-      raw: docker rm -f Z_phpserver
+      raw: docker rm -f Z18_phpserver
       
     - name: lösche Wordpress-Container
-      raw: docker rm -f Z_webserver
+      raw: docker rm -f Z18_webserver
 
     - name: lösche MYsql-Container
-      raw: docker rm -f Z_datenbank
+      raw: docker rm -f Z18_datenbank

@@ -5,7 +5,7 @@
 
     - name: Datenbank-Container erzeugen
       docker_container:
-        name: Z_datenbank
+        name: Z18_datenbank
         image: mysql
         state: started
         ports:
@@ -17,27 +17,27 @@
 
     - name: Wordpress-Container erzeugen 
       docker_container:
-        name: Z_webserver
+        name: Z18_webserver
         image: wordpress
         state: started
         ports: 
           - 192.168.18.99:8000:80
         env:
-          WORDPRESS_DB_HOST: Z_datenbank
+          WORDPRESS_DB_HOST: Z18_datenbank
           WORDPRESS_DB_USER: root
-          WORDPRESS_DB_PASSWORD: michaeloderjörg
+          WORDPRESS_DB_PASSWORD: Schmetterl1ng
           WORDPRESS_DB_NAME: wordpress               
         links:
-          - Z_datenbank:mysql  
+          - Z18_datenbank:mysql  
      
     - name: PHPmyAdmin-Container erzeugen
       docker_container:
-        name: Z_phpserver
+        name: Z18_phpserver
         image: phpmyadmin
         state: started
         ports:
           - 192.168.18.99:12000:80
         env:
-          PMA_HOST: Z_datenbank
+          PMA_HOST: Z18_datenbank
         links:
-          - Z_datenbank:mysql
+          - Z18_datenbank:mysql

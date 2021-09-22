@@ -1,0 +1,11 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+  
+    - name: lösche PHPmyAdmin-Container
+      docker_container:
+        name:
+          - Z19_phpserver
+        state: absent
+        

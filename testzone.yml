@@ -4,11 +4,13 @@
   tasks:
 
   - name: php unterstützung für apache
-    apt:
-      name: libapache2-mod-php
+    package:
+      name: 
+        - "{{ apache2 }}"
+        - "{{ php }}"
       state: latest # absent
+      update_cache: yes
+
     when: ansible_distribution in ["Debian", "Ubuntu"]
           and ansible_virtualization_type in ["virtualbox"]
-  #- name: Updates
- #   apt: 
-#      update_cache: yes
+ 
