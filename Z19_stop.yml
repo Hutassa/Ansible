@@ -5,8 +5,13 @@
 
     - name: stoppe Container
       docker_container:
-        name:
-          - Z19_phpserver
-          - Z19_webserver
-          - Z19_datenbank
+        name: Z19_phpserver
+        state: stopped
+    - name: stoppe Container
+      docker_container:
+        name: Z19_webserver
+        state: stopped
+    - name: stoppe Container
+      docker_container:
+        name: Z19_datenbank
         state: stopped

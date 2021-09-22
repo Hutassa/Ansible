@@ -5,7 +5,14 @@
   
     - name: lösche PHPmyAdmin-Container
       docker_container:
-        name:
-          - Z19_phpserver
+        name: Z19_phpserver
         state: absent
-        
+    - name: lösche Webserver-Container
+      docker_container:
+        name: Z19_webserver
+        state: absent
+    - name: lösche Datenbank-Container
+      docker_container:
+        name: Z19_datenbank
+        state: absent
+ 
