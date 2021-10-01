@@ -28,6 +28,8 @@
           WORDPRESS_DB_NAME: wordpress
           WORDPRESS_DB_USER: root
           WORDPRESS_DB_PASSWORD: Schmetterl1ng
+        volumes:
+          - wp-heimwebsite:/var/www/html
         links:
           - heimdatenbank:mysql
 

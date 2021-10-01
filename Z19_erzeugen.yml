@@ -26,7 +26,9 @@
           WORDPRESS_DB_HOST: Z19_datenbank
           WORDPRESS_DB_USER: root
           WORDPRESS_DB_PASSWORD: Schmetterl1ng
-          WORDPRESS_DB_NAME: wordpress               
+          WORDPRESS_DB_NAME: wordpress
+        volumes:
+          - wp-Z19-website:/var/www/html               
         links:
           - Z19_datenbank:mysql  
      
