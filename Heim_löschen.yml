@@ -1,7 +1,7 @@
 ---
 - hosts: ubuntu
   become: yes
-  become_user: mathias
+  become_user: root
   tasks:
 
     - name: phpserver löschen
