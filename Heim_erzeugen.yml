@@ -1,6 +1,7 @@
 ---
-- hosts: all
+- hosts: ubuntu
   become: yes
+  become_user: mathias
   tasks:
 
     - name: DB erzeugen

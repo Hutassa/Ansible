@@ -1,13 +1,14 @@
 ---
-- hosts: all
+- hosts: ubuntu
   become: yes
+  become_user: mathias
   tasks:
 
     - name: phpserver löschen
-      raw: docker rm -f heimphpserver
+      raw: sudo docker rm -f heimphpserver
 
     - name: webserver löschen
-      raw: docker rm -f heimwebserver
+      raw: sudo docker rm -f heimwebserver
    
     - name: datenbank löschen
-      raw: docker rm -f heimdatenbank
+      raw: sudo docker rm -f heimdatenbank

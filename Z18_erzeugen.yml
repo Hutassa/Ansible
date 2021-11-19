@@ -28,10 +28,10 @@
           WORDPRESS_DB_PASSWORD: Schmetterl1ng
           WORDPRESS_DB_NAME: wordpress
         volumes:
-          - wp-Z18-website:/var/lib/mysql              
+          - wp-Z18-website:/var/www/html              
         links:
           - Z18_datenbank:mysql  
-     
+  
     - name: PHPmyAdmin-Container erzeugen
       docker_container:
         name: Z18_phpserver
