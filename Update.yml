@@ -1,9 +1,0 @@
----
-- hosts: ubuntu
-  become: yes
-  tasks:
-   
-    - name: Update wird ausgeführt...
-      package:
-        update_cache: yes
-        upgrade: dist

@@ -13,6 +13,8 @@
           MYSQL_ROOT_PASSWORD: Schmetterl1ng
         volumes:
           - website:/var/lib/mysql
+        etc_hosts:
+          - "127.0.0.1"
 
     - name: Wordpress erzeugen
       docker_container:
@@ -20,14 +22,14 @@
         image: wordpress
         state: started
         ports: 
-          - 192.168.56.104:8000:80
+          - 192.168.56.104:80:80
         env:
           WORDPRESS_DB_HOST: bob
           WORDPRESS_DB_USER: root
           WORDPRESS_DB_NAME: wordpress
           WORDPRESS_DB_PASSWORD: Schmetterl1ng
-        volumes:
-          - wp-website:/var/www/html
+#        volumes:
+#          - wp-website:/var/www/html
         links:
           - bob:mysql
 

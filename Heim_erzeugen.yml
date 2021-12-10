@@ -10,7 +10,7 @@
         image: mysql
         state: started
         ports:
-          - 192.168.178.101:3000:3306
+          - 192.168.178.101:3306:3306
         env:
           MYSQL_ROOT_PASSWORD: Schmetterl1ng
           MYSQL_DATABASE: wordpress
@@ -23,14 +23,14 @@
         image: wordpress
         state: started
         ports:
-          - 192.168.178.99:8000:80
+          - 192.168.178.99:80:80
         env:
           WORDPRESS_DB_HOST: heimdatenbank
           WORDPRESS_DB_NAME: wordpress
           WORDPRESS_DB_USER: root
           WORDPRESS_DB_PASSWORD: Schmetterl1ng
         volumes:
-          - wp-heimwebsite:/var/www/html
+  #        - wp-heimwebsite:/var/www/html
         links:
           - heimdatenbank:mysql
 
