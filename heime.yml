@@ -7,7 +7,7 @@
     - name: DB erzeugen
       docker_container:
         name: heimdatenbank
-        image: mysql
+        image: mysql:latest
         state: started
         ports:
           - 192.168.178.101:3306:3306
@@ -15,12 +15,12 @@
           MYSQL_ROOT_PASSWORD: Schmetterl1ng
           MYSQL_DATABASE: wordpress
         volumes:
-          heimwebsite:/var/lib/mysql
+          heim:/var/lib/mysql
 
     - name: WP erzeugen
       docker_container:
         name: heimwebserver
-        image: wordpress
+        image: wordpress:latest
         state: started
         ports:
           - 192.168.178.99:80:80
@@ -30,17 +30,17 @@
           WORDPRESS_DB_USER: root
           WORDPRESS_DB_PASSWORD: Schmetterl1ng
         volumes:
-  #        - wp-heimwebsite:/var/www/html
+          - wheim:/var/www/html
         links:
           - heimdatenbank:mysql
 
     - name: PHP erzeugen
       docker_container:
         name: heimphpserver
-        image: phpmyadmin
+        image: phpmyadmin:latest
         state: started
         ports:
-          - 192.168.178.99:12000:80
+          - 192.168.178.101:80:80
         env:
           PMA_HOST: heimdatenbank
         links:

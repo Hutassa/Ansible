@@ -5,21 +5,21 @@
 
     - name: lösche php-server
       docker_container:
-        name: antoine
+        name: uebersicht
         image: phpmyadmin
         state: absent
         force_kill: true
 
     - name: lösche webserver
       docker_container:
-        name: erdmut
+        name: frontend
         image: wordpress
         state: absent
         force_kill: true
      
     - name: lösche Datenbank
       docker_container:
-        name: bob
+        name: backend
         image: mysql
         state: absent
         force_kill: true

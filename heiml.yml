@@ -1,0 +1,23 @@
+---
+- hosts: ubuntu
+  become: yes
+  become_user: root
+  tasks:
+
+    - name: phpserver loeschen
+      docker_container:
+        name: heimphpserver
+        state: absent
+        force_kill: true
+
+    - name: webserver loeschen
+      docker_container:
+        name: heimwebserver
+        state: absent
+        force_kill: true
+
+    - name: datenbank loeschen
+      docker_container:
+        name: heimdatenbank
+        state: absent
+        force_kill: true

@@ -4,43 +4,41 @@
   tasks:
     - name: Datenbank erzeugen
       docker_container:
-        name: bob
-        image: mysql
+        name: backend
+        image: mysql:latest
         state: started
         ports:
-          - 192.168.56.104:3000:3306
+          - 192.168.56.104:3306:3306
         env:
           MYSQL_ROOT_PASSWORD: Schmetterl1ng
         volumes:
           - website:/var/lib/mysql
-        etc_hosts:
-          - "127.0.0.1"
 
     - name: Wordpress erzeugen
       docker_container:
-        name: erdmut
-        image: wordpress
+        name: frontend
+        image: wordpress:latest
         state: started
         ports: 
           - 192.168.56.104:80:80
         env:
-          WORDPRESS_DB_HOST: bob
+          WORDPRESS_DB_HOST: backend
           WORDPRESS_DB_USER: root
           WORDPRESS_DB_NAME: wordpress
           WORDPRESS_DB_PASSWORD: Schmetterl1ng
-#        volumes:
-#          - wp-website:/var/www/html
+        volumes:
+          - wp-website:/var/www/html
         links:
-          - bob:mysql
+          - backend:mysql
 
     - name: PHPmyAdmin erzeugen
       docker_container:
-        name: antoine
-        image: phpmyadmin
+        name: uebersicht
+        image: phpmyadmin:latest
         state: started
         ports:
-          - 192.168.56.104:12000:80
+          - 192.168.56.104:88:80
         env:
-          PMA_HOST: bob
+          PMA_HOST: backend
         links:
-          - bob:mysql
+          - backend:mysql
